@@ -35,6 +35,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.file.Files;
 
 import org.junit.Test;
 
@@ -335,7 +336,7 @@ public class XDocReportRegistryTestCase
         File tempFile = null;
         try
         {
-            tempFile = File.createTempFile( "document", ".zip" );
+            tempFile = Files.createTempFile( "document", ".zip" ).toFile();
             report.process( context, new FileOutputStream( tempFile ) );
             XDocArchive documentArchive = XDocArchive.readZip( new FileInputStream( tempFile ) );
 
